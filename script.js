@@ -30,7 +30,7 @@ const createTableContent = (data) => {
   const thead = document.createElement("thead");
   const tbody = document.createElement("tbody");
   const tableRow = document.createElement("tr");
-  const list = ["Name", "Has Picked", "remove"];
+  const list = ["Name", "Has Picked", "Picked", "Remove"];
 
   list.forEach((element) => {
     const tableHeading = document.createElement("th");
@@ -102,5 +102,3 @@ const pick = () => {
 };
 
 window.addEventListener("DOMContentLoaded", init);
-
-
