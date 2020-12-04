@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+  background-color: aqua;
+  height: 20px;
+}
+
+.result{
+  text-align: center;
+  padding: 2em;
+}
+.pick{
+  padding: .5em;
+  margin: 1em;
+}
+.header .title h2 {
+  font-family: "Courier New", Courier, monospace;
+}
+
+.right-side {
+  font-size: 25px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.form-container {
+  width: 100%;
+  padding: 20px;
+  background-color: aquamarine;
+  margin: auto;
+}
+
+.table-contianer {
+  
+  padding: 30px;
+}
+
+.content-table {
+  border-collapse: collapse;
+  margin: auto;
+  font-size: 0.9em;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+  background-color: #31bea2;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+  text-transform: uppercase;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #12d8b0;
+}
+
