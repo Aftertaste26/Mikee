@@ -1,22 +1,8 @@
-let list = [
-  {
-    name: "mikee",
-    hasPicked: false,
-    beenPicked: false,
-  },
-  {
-    name: "kyle",
-    hasPicked: false,
-    beenPicked: false,
-  },
-  {
-    name: "mk",
-    hasPicked: false,
-    beenPicked: false,
-  },
-];
-
 const init = () => {
+  if (!sessionStorage.mikee) {
+    sessionStorage.mikee = "[]";
+  }
+
   const main = document.createElement("div");
   main.classList.add("table-contianer");
   main.id = "table-contianer";
@@ -25,6 +11,7 @@ const init = () => {
 };
 
 const createTable = () => {
+  const list = JSON.parse(sessionStorage.mikee);
   const table = document.createElement("table");
   table.classList.add("content-table");
   table.id = "table";
@@ -60,7 +47,7 @@ const createTableContent = (data) => {
     button.classList.add("paid-button");
     button.addEventListener("click", () => {
       data.splice(data.indexOf(element), 1);
-      localStorage.setItem("listOfDebt", data.map(JSON.stringify).join(""));
+      sessionStorage.mikee = JSON.stringify(data);
       updateTable();
     });
 
@@ -84,24 +71,30 @@ form.addEventListener("click", (element) => {
     const name = form[0].value;
 
     if (name != "") {
-      list.push({
+      const currentList = JSON.parse(sessionStorage.mikee);
+      currentList.push({
         name: name,
         hasPicked: false,
         beenPicked: false,
       });
+      sessionStorage.mikee = JSON.stringify(currentList);
       updateTable();
     }
   }
 });
 
 const pick = () => {
+  console.log(sessionStorage.mikee);
+  const list = JSON.parse(sessionStorage.mikee);
   const result = document.querySelector(".result");
-
-  if (list.length) {
-    const randomIndex = Math.floor(Math.random() * 100) % list.length;
-    const picked = list.splice(randomIndex, 1)[0];
+  const newList = list.filter((data) => !data.beenPicked);
+  if (newList.length) {
+    const randomIndex = Math.floor(Math.random() * 100) % newList.length;
+    const picked = newList[randomIndex];
+    picked.beenPicked = true;
     result.childNodes[1].textContent = picked.name;
-    console.log(picked);
+
+    sessionStorage.mikee = JSON.stringify(list);
     updateTable();
   } else {
     result.childNodes[1].textContent = "That is all";
@@ -109,3 +102,5 @@ const pick = () => {
 };
 
 window.addEventListener("DOMContentLoaded", init);
+
+

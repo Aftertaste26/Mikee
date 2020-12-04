@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mikee</title>
     <link rel="stylesheet" href="style.css" />
+
 </head>
 
 <body>
@@ -16,18 +17,53 @@
     </div>
 
     <div class="form-container">
-        <form id="testing">
+        <form action="javascript:void(0);" id="testing">
             <label for="name">Name</label>
             <input id="name" name="name" type="text" />
-            <input id="addBtn" type="button" value="Add" />
+            <input id="addBtn" type="submit" value="Add" />
         </form>
     </div>
 
-    <div class="result">
+    <div class="result" id="result">
         <h1>result</h1>
         <button class="pick" onclick="pick()">pick</button>
     </div>
+
+    <button class="pick" onclick="hello()">pick</button>
+
 </body>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+
+<script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+        apiKey: "AIzaSyCDl63kh_MfjpMfb4WkBIBBJE_Ca92A6Zw",
+        authDomain: "mikee-randomizer.firebaseapp.com",
+        projectId: "mikee-randomizer",
+        storageBucket: "mikee-randomizer.appspot.com",
+        messagingSenderId: "795362943856",
+        appId: "1:795362943856:web:857afcb0f30692758ce5b5",
+        measurementId: "G-ZX3J2MPFVZ"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    const firestore = firebase.firestore();
+    const docRef = firestore.doc("sample/room");
+
+    function hello(params) {
+        console.log("hehehe");
+        docRef.set({ hi: "hello" });
+    }
+
+</script>
 <script src="script.js"></script>
 
 </html>
